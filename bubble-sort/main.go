@@ -26,7 +26,6 @@ func bubble_sort(arr []int) (result []int) {
 			}
 		}
 	}
-
 	return
 }
 
