@@ -1,75 +1,62 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type node struct {
-	left *node
+	left  *node
 	right *node
-	val int
+	val   int
 }
 
-func addNode(curr *node, child *node) (root *node){
+func addNode(curr *node, child *node) (root node) {
 	if curr != nil {
 		if child.val < curr.val {
 			if curr.left != nil {
 				addNode(curr.left, child)
 			} else {
-				curr.left = child;
+				curr.left = child
 			}
 		} else {
 			if curr.right != nil {
 				addNode(curr.right, child)
 			} else {
-				curr.right = child;
+				curr.right = child
 			}
 		}
 	}
 
-	return curr
+	return *curr
 }
 
-func createNode(value int) (curr node){
+func createNode(value int) (curr node) {
 	return node{
-		left: nil,
+		left:  nil,
 		right: nil,
-		val: value,
+		val:   value,
 	}
 }
 
-func printInOrder(root *node){
-	curr := root
-	stack := []node{}
+func printInOrder(curr *node) {
 
-	for len(stack) > 0 || curr != nil {
-		for curr != nil {
-			stack = append(stack, *curr)
-			curr = curr.left
-		}
-
-		curr, stack = &stack[0], stack[1:]
-		fmt.Print("|")
-		fmt.Print(curr.val)
-		curr = curr.right
+	if curr.left != nil {
+		printInOrder(curr.left)
 	}
 
-	fmt.Println("|");
-	return
+	fmt.Print("|")
+	fmt.Print(curr.val)
+
+	if curr.right != nil {
+		printInOrder(curr.right)
+	}
+
 }
 
 func main() {
-	root := createNode(5);
-	children := []node{};
-	children = append(children,createNode(1));
-	children = append(children,createNode(5));
-	children = append(children,createNode(7));
-	children = append(children,createNode(8));
-	children = append(children,createNode(3));
+	children := []node{createNode(1), createNode(6), createNode(2)}
+	root := createNode(5)
+	root.left = &children[0]
+	root.right = &children[1]
+	root.left.right = &children[2]
 
-	for i := 0; i < len(children); i++ {
-		root = *addNode(&root, &children[i])
-	}
-
-	printInOrder(&root);
+	printInOrder(&root)
 }
