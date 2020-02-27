@@ -3,11 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	my_map := make(map[string]car)
+	var my_map map[string]car
+	my_map = make(map[string]car)
 	my_map["a"] = newCar("vroom", "blue")
 	my_map["b"] = newCar("ferrrreeee", "red")
 	my_map["c"] = newCar("land rooomer", "green")
-	my_map["d"] = car{name: "woot", color : "gold"};
+	my_map["d"] = car(honda{name: "woot", color: "gold"})
 	fmt.Println(my_map)
 }
 
@@ -18,6 +19,11 @@ func newCar(name, color string) (new_car car) {
 }
 
 type car struct {
+	name  string
+	color string
+}
+
+type honda struct {
 	name  string
 	color string
 }

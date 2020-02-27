@@ -4,12 +4,15 @@ import (
 	"fmt"
 )
 
-func main(){
+func main() {
 	i := 7
 	inc(&i)
-	fmt.Println(i)
+	//fmt.Println(i)
 }
 
-func inc(x *int){
-	*x++;
+func inc(x *int) {
+	fmt.Println(x)
+	fmt.Println(*x)
+	fmt.Println(&x)
+	*x++
 }
