@@ -15,4 +15,8 @@ func main() {
 	for _, v := range arr {
 		fmt.Println(v)
 	}
+
+	//cap is the capacity of the arr
+	fmt.Println(cap(arr))
+
 }
