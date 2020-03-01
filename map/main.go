@@ -9,6 +9,11 @@ func main() {
 	my_map["b"] = newCar("ferrrreeee", "red")
 	my_map["c"] = newCar("land rooomer", "green")
 	my_map["d"] = car(honda{name: "woot", color: "gold"})
+
+	my_map = map[string]car {
+		"woot" : newCar("descoop", "poop"),
+	}
+
 	fmt.Println(my_map)
 }
 

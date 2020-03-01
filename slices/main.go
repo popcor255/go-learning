@@ -42,4 +42,18 @@ func main() {
 	fmt.Println(arr)
 	fmt.Println(temp)
 
+
+	arr1 := []int{1, 2, 3, 4}
+	arr2 := []int{}
+
+	fmt.Println(cap(arr2))
+
+	for right := len(arr1) - 1; right >= 0; right-- {
+		arr2 = append(arr2, arr1[right])
+		fmt.Println(cap(arr2))
+	}
+
+	fmt.Println(arr1)
+	fmt.Println(arr2)
+
 }
