@@ -12,7 +12,10 @@ func main() {
 
 	my_map = map[string]car {
 		"woot" : newCar("descoop", "poop"),
+		"cool" : newCar("descoop", "poop"),
 	}
+
+	delete(my_map, "woot")
 
 	fmt.Println(my_map)
 }
